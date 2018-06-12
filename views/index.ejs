@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>basic mongoose form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<style>
+    table{
+        border: 4px solid grey;
+        width: 80%;
+    }
+    thead{
+        border-bottom: 1px dotted blue;
+    }
+    tbody{
+        border: 5px solid red;
+    }
+    tr{
+        border: 2px solid green;
+    }
+    td{
+        border: 2px solid rgb(43, 167, 167);
+    }
+</style>
+</head>
+<body>
+    <h1>basic mongoose form</h1>
+
+    JSON.stringify(messages) => <%- JSON.stringify(messages) %> 
+    <!-- based on the structure of your messages, determine how to display them -->
+    <% if(messages.registration) { %>
+         <% for (var x of messages.registration) { %>
+          <h3><%= x %></h3>
+         <% } %>
+     <% } %>
+
+
+
+
+    <hr>
+    <form action="/users" method="POST">
+        first name: <input type="text" name="fname"><br>
+        last name: <input type="text" name="lname"><br>
+        age <input type="number" name="age"><br>
+        email <input type="text" name="email"><br>
+        <input type="submit" value="send">
+    </form>
+    <hr>
+    <% if(users) {%>
+        Users: <br>
+        <% for (var user in users){ %>
+            <%= parseInt(user)+1 %>. 
+            First Name: <%= users[user].first_name %>,  
+            Last Name: <%= users[user].last_name %>, 
+            Age: <%= users[user].age %>,  
+            email: <%= users[user].email %>,
+            <br>
+        <% } %>
+    <% } %>
+    <hr>
+    <% if(users) {%>
+
+    <table>
+        <thead>
+            <th>num</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th>Email</th>
+        </thead>
+        <tbody>
+                <% for (var user in users){ %>
+            <tr>
+                <td><%= parseInt(user)+1 %></td>
+                <td><%= users[user].first_name %></td>
+                <td><%= users[user].last_name %></td>
+                <td><%= users[user].age %></td>
+                <td><%= users[user].email %></td>
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
+    <% } %>
+
+</body>
+</html>
